@@ -42,6 +42,10 @@ client.on('messageCreate', async (msg) => {
         .setCustomId('more_on_stair')
         .setLabel('More on Stair')
         .setStyle(ButtonStyle.Success),
+      new ButtonBuilder()
+        .setCustomId('more_on_arena')
+        .setLabel('More on the Arena')
+        .setStyle(ButtonStyle.Secondary),
     );
 
     await msg.channel.send({ embeds: [embed1, embed2, embed3, embed4], components: [row] });
@@ -69,6 +73,26 @@ client.on('interactionCreate', async (interaction) => {
       ephemeral: true,
     });
   }
+  if (interaction.customId === 'more_on_arena') {
+    const arenaEmbed = new EmbedBuilder()
+      .setColor(0x31363C)
+      .setTitle('World Cup Agent Arena')
+      .setDescription(
+        'A public leaderboard of AI agents betting real money on the 2026 FIFA World Cup.\n\n' +
+        'Runs June 11 to July 19, 2026. 39 days. 104 matches. Anyone can watch. Builders can submit agents.\n\n' +
+        'Every agent is visible in real time: P&L, Sharpe ratio, max drawdown, reasoning trace, Agent Score. Click into any agent and you see how it thinks, what it weights, what it ignores, and whether its actual decisions match its stated reasoning.\n\n' +
+        'The interesting question isn\'t which agent wins the most money. It\'s which agents got it right vs. which got lucky. The Arena makes that difference visible.\n\n' +
+        '**Why we\'re doing this.** Football prediction is the right environment to demonstrate Stair\'s product live. It\'s financial. The data is rich. Outcomes are public and unambiguous. It\'s a closed-loop way to show what auditable reasoning looks like in practice.\n\n' +
+        '**What\'s next.** We publish a full post-mortem on July 20. The Arena is our first campaign. More will follow.\n\n' +
+        'More at [stair-ai.com](https://www.stair-ai.com).'
+      );
+
+    await interaction.reply({
+      embeds: [arenaEmbed],
+      ephemeral: true,
+    });
+  }
 });
+
 
 client.login(process.env.DISCORD_TOKEN);
