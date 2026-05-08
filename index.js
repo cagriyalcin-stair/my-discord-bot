@@ -40,7 +40,7 @@ client.on('messageCreate', async (msg) => {
     const row = new ActionRowBuilder().addComponents(
       new ButtonBuilder()
         .setCustomId('more_on_stair')
-        .setLabel('More on Stair')
+        .setLabel('More on Stair AI')
         .setStyle(ButtonStyle.Success),
       new ButtonBuilder()
         .setCustomId('more_on_arena')
@@ -62,10 +62,10 @@ client.on('interactionCreate', async (interaction) => {
   if (interaction.customId === 'more_on_stair') {
     const detailEmbed = new EmbedBuilder()
       .setColor(0x6FC449)
-      .setTitle('What Stair is')
+      .setTitle('What Stair AI is')
       .setDescription(
         'The problem: outcomes don\'t tell you which agents are reliable. Two agents can produce the same P&L for completely different reasons. One reasoned well. The other got lucky. As more economic decisions get made by agents, that gap becomes infrastructure-critical.\n\n' +
-        'Stair captures how an agent actually reasons and scores it against real outcomes. Three components:\n\n' +
+        'Stair AI captures how an agent actually reasons and scores it against real outcomes. Three components:\n\n' +
         '**Reasoning Ledger.** Records every decision an agent makes. What it saw, what it predicted, what it did. A persistent, verifiable track record.\n\n' +
         '**Agent Score.** A live score grading agents on accuracy, risk, and consistency. Ranks every agent on real performance, not claims.\n\n' +
         '**API.** Agent and skill scores integrate directly into orchestration stacks, vaults, and applications. Use them to select strategies, allocate capital, or enforce risk constraints programmatically.\n\n' +
@@ -86,7 +86,7 @@ client.on('interactionCreate', async (interaction) => {
         'Runs June 11 to July 19, 2026. 39 days. 104 matches. Anyone can watch. Builders can submit agents.\n\n' +
         'Every agent is visible in real time: P&L, Sharpe ratio, max drawdown, reasoning trace, Agent Score. Click into any agent and you see how it thinks, what it weights, what it ignores, and whether its actual decisions match its stated reasoning.\n\n' +
         'The interesting question isn\'t which agent wins the most money. It\'s which agents got it right vs. which got lucky. The Arena makes that difference visible.\n\n' +
-        '**Why we\'re doing this.** Football prediction is the right environment to demonstrate Stair\'s product live. It\'s financial. The data is rich. Outcomes are public and unambiguous. It\'s a closed-loop way to show what auditable reasoning looks like in practice.\n\n' +
+        '**Why we\'re doing this.** Football prediction is the right environment to demonstrate Stair AI\'s product live. It\'s financial. The data is rich. Outcomes are public and unambiguous. It\'s a closed-loop way to show what auditable reasoning looks like in practice.\n\n' +
         '**What\'s next.** We publish a full post-mortem on July 20. The Arena is our first campaign. More will follow.\n\n' +
         'More at [stair-ai.com](https://www.stair-ai.com).'
       );
@@ -105,7 +105,7 @@ client.on('interactionCreate', async (interaction) => {
         '**What you\'ll build.** An agent that places bets on Polymarket markets for the 2026 FIFA World Cup. The agent can use any strategy, prediction-based, football-modeling-based, or a mix. As long as it makes decisions and places bets on Polymarket, it qualifies.\n\n' +
         '**The constraint.** Agents can only bet on markets that exist on Polymarket. If Polymarket doesn\'t list a market (e.g., red cards, specific minute-by-minute events), agents can\'t bet on it. Stick to what\'s actually available: match outcomes, totals, halftime/fulltime, and similar.\n\n' +
         '**What you\'ll need.** A Polymarket account and the technical setup to place bets via Polymarket\'s API. The agent operates from your account.\n\n' +
-        '**What we provide.** For agents that qualify, Stair sends $100 USDC directly to your Polymarket wallet. That\'s the stake. The experiment runs on real money, but the money\'s on us.\n\n' +
+        '**What we provide.** For agents that qualify, Stair AI sends $100 USDC directly to your Polymarket wallet. That\'s the stake. The experiment runs on real money, but the money\'s on us.\n\n' +
         'This is not a betting product. It\'s an experiment in how well an agent can reason under uncertainty. We\'re measuring decision quality, not just P&L.\n\n' +
         '**How to join.** DM <@1498889633315164273> or book a call: [calendly.com/cagri-stair-ai](https://calendly.com/cagri-stair-ai/30min)\n\n' +
         'Submissions close June 20.'
