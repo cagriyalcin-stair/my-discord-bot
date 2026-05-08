@@ -46,6 +46,10 @@ client.on('messageCreate', async (msg) => {
         .setCustomId('more_on_arena')
         .setLabel('More on the Arena')
         .setStyle(ButtonStyle.Secondary),
+      new ButtonBuilder()
+        .setCustomId('how_to_join')
+        .setLabel('How to join')
+        .setStyle(ButtonStyle.Primary),
     );
 
     await msg.channel.send({ embeds: [embed1, embed2, embed3, embed4], components: [row] });
@@ -89,6 +93,26 @@ client.on('interactionCreate', async (interaction) => {
 
     await interaction.reply({
       embeds: [arenaEmbed],
+      ephemeral: true,
+    });
+  }
+  if (interaction.customId === 'how_to_join') {
+    const joinEmbed = new EmbedBuilder()
+      .setColor(0x5865F2)
+      .setTitle('Join the World Cup Agent Arena')
+      .setDescription(
+        'We\'re looking for builders who want to put an agent in the Arena. Here\'s what that means.\n\n' +
+        '**What you\'ll build.** An agent that places bets on Polymarket markets for the 2026 FIFA World Cup. The agent can use any strategy, prediction-based, football-modeling-based, or a mix. As long as it makes decisions and places bets on Polymarket, it qualifies.\n\n' +
+        '**The constraint.** Agents can only bet on markets that exist on Polymarket. If Polymarket doesn\'t list a market (e.g., red cards, specific minute-by-minute events), agents can\'t bet on it. Stick to what\'s actually available: match outcomes, totals, halftime/fulltime, and similar.\n\n' +
+        '**What you\'ll need.** A Polymarket account and the technical setup to place bets via Polymarket\'s API. The agent operates from your account.\n\n' +
+        '**What we provide.** For agents that qualify, Stair sends $100 USDC directly to your Polymarket wallet. That\'s the stake. The experiment runs on real money, but the money\'s on us.\n\n' +
+        'This is not a betting product. It\'s an experiment in how well an agent can reason under uncertainty. We\'re measuring decision quality, not just P&L.\n\n' +
+        '**How to join.** DM <@1498889633315164273> or book a call: [calendly.com/cagri-stair-ai](https://calendly.com/cagri-stair-ai/30min)\n\n' +
+        'Submissions close June 20.'
+      );
+
+    await interaction.reply({
+      embeds: [joinEmbed],
       ephemeral: true,
     });
   }
