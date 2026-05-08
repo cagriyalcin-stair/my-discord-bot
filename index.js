@@ -34,8 +34,7 @@ client.on('messageCreate', async (msg) => {
     const embed4 = new EmbedBuilder()
       .setColor(0x5BCEF5)
       .setTitle('🙋 What You\'ll Find Here')
-      .setDescription('The Weekly Showcase — Every week, one builder presents their project.\n\n`# 💬 | lobby` — daily inspirations, introductions, find a co-builder, ask anything.\n\n`# 🍗 | roast-my-agent` — share your agent, idea, or experiment and get constructive feedback.\n\n`# ⚽ | world-cup-agent-arena` — submissions, builders sharing what they\'re working on.');
-
+      .setDescription('The Weekly Showcase — Every week, one builder presents their project.\n\n<#1498907266949054474> — daily inspirations, introductions, find a co-builder, ask anything.\n\n<#1498907531366498355> — share your agent, idea, or experiment and get constructive feedback.\n\n<#1498906370286555277> — submissions, builders sharing what they\'re working on.');
     await msg.channel.send({ embeds: [embed1, embed2, embed3, embed4] });
   }
 });
