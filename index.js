@@ -42,17 +42,33 @@ function mulberry32(seed) {
 
 client.once('ready', async () => {
   console.log(`Logged in as ${client.user.tag}`);
+  console.log(`Bot is in ${client.guilds.cache.size} server(s)`);
 
-  // Register slash commands to every server the bot is in
   const commands = [raffleCommand.toJSON()];
+
+  // Register globally instead of per-guild
+  try {
+    console.log('Registering slash commands globally...');
+    await client.application.commands.set(commands);
+    console.log('Slash commands registered globally! (may take up to 1 hour to appear)');
+  } catch (err) {
+    console.error('GLOBAL REGISTRATION FAILED:', err.message);
+    console.error('Full error:', err);
+  }
+
+  // Also register per-guild for instant availability
   for (const guild of client.guilds.cache.values()) {
     try {
+      console.log(`Attempting to register in guild: ${guild.name} (${guild.id})`);
       await guild.commands.set(commands);
-      console.log(`Registered /raffle in ${guild.name}`);
+      console.log(`SUCCESS: Registered /raffle in ${guild.name}`);
     } catch (err) {
-      console.error(`Failed to register in ${guild.name}:`, err);
+      console.error(`FAILED in ${guild.name}:`, err.message);
+      console.error('Full error:', err);
     }
   }
+
+  console.log('Registration process complete.');
 });
 
 client.on('messageCreate', async (msg) => {
